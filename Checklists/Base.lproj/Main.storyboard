@@ -14,25 +14,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChecklistItem" id="rYi-Zq-zt4">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="ChecklistItem" id="rYi-Zq-zt4">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rYi-Zq-zt4" id="Uzv-Qt-Gos">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yZ-jG-h46">
-                                            <rect key="frame" x="18" y="11" width="264" height="21"/>
+                                            <rect key="frame" x="38" y="11" width="202" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="☑️" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dS4-b2-UIa">
+                                            <rect key="frame" x="8" y="10" width="25" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="25" id="7Oy-GF-2v3"/>
+                                                <constraint firstAttribute="width" constant="25" id="Tqv-M7-OkH"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="2yZ-jG-h46" secondAttribute="trailing" constant="30" id="Fky-2a-ge9"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="2yZ-jG-h46" secondAttribute="trailing" constant="5" id="8Zu-om-ZEJ"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="2yZ-jG-h46" secondAttribute="bottom" constant="3" id="Ivl-fe-6rv"/>
-                                        <constraint firstItem="2yZ-jG-h46" firstAttribute="leading" secondItem="Uzv-Qt-Gos" secondAttribute="leadingMargin" constant="10" id="mUO-wv-OmR"/>
+                                        <constraint firstAttribute="centerY" secondItem="dS4-b2-UIa" secondAttribute="centerY" id="LeU-nD-UsW"/>
+                                        <constraint firstItem="2yZ-jG-h46" firstAttribute="leading" secondItem="dS4-b2-UIa" secondAttribute="trailing" constant="5" id="R2B-yH-MC1"/>
+                                        <constraint firstItem="dS4-b2-UIa" firstAttribute="leading" secondItem="Uzv-Qt-Gos" secondAttribute="leadingMargin" id="S8Q-6K-k89"/>
                                         <constraint firstItem="2yZ-jG-h46" firstAttribute="top" secondItem="Uzv-Qt-Gos" secondAttribute="topMargin" constant="3" id="xTi-73-nSg"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="J42-gk-zh5" kind="modal" identifier="EditItem" trigger="accessoryAction" id="k1q-ch-EAf"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -55,7 +70,7 @@
         <!--Add Item-->
         <scene sceneID="LRh-Ln-lTb">
             <objects>
-                <tableViewController id="CB5-oQ-I5W" customClass="AddItemViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="CB5-oQ-I5W" customClass="ItemDetailViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="RoK-4I-S8o">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -157,4 +172,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="5E3-um-xuq"/>
+    </inferredMetricsTieBreakers>
 </document>
