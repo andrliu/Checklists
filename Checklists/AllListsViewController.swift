@@ -15,12 +15,12 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        tableView.rowHeight = 44
     }
 
     override func viewWillAppear(animated: Bool)
     {
         super.viewWillAppear(animated)
-        tableView.rowHeight = 44
         tableView.reloadData()
     }
     
@@ -65,8 +65,6 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
             cell.detailTextLabel!.text = "\(count) Remaining"
         }
         cell.imageView!.image = UIImage(named: checklist.iconName)
-        cell.imageView!.layer.borderColor = UIColor.blackColor().CGColor
-        cell.imageView!.layer.borderWidth = 2
         cell.accessoryType = .DetailDisclosureButton
         return cell
     }
@@ -119,13 +117,13 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
         }
     }
     
-    func listDetailViewControllerDidCancel(controller: ListDetailViewController) {
-            dismissViewControllerAnimated(true, completion: nil)
+    func listDetailViewControllerDidCancel(controller: ListDetailViewController)
+    {
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     func listDetailViewController(controller: ListDetailViewController, didFinishAddingChecklist checklist: Checklist)
     {
-        let newRowIndex = dataModel.lists.count
         dataModel.lists.append(checklist)
         dataModel.sortChecklists()
         tableView.reloadData()

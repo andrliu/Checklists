@@ -88,6 +88,11 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
     {
         let label = cell.viewWithTag(1000) as UILabel
         label.text = item.text
+        let dueDateLabel = cell.viewWithTag(1002) as UILabel
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .MediumStyle
+        formatter.timeStyle = .ShortStyle
+        dueDateLabel.text = formatter.stringFromDate(item.dueDate)
     }
     
     func itemDetailViewControllerDidCancel(controller: ItemDetailViewController)
@@ -97,25 +102,16 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
     
     func itemDetailViewController(controller: ItemDetailViewController, didFinishAddingItem item: ChecklistItem)
     {
-        let newRowIndex = checklist.items.count
         checklist.items.append(item)
-        let indexPath = NSIndexPath(forRow: newRowIndex, inSection: 0)
-        let indexPaths = [indexPath]
-        tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
+        checklist.sortChecklistItems()
+        tableView.reloadData()
         dismissViewControllerAnimated(true, completion: nil)
     }
     
     func itemDetailViewController(controller: ItemDetailViewController, didFinishEditingItem item: ChecklistItem)
     {
-        if let index = find(checklist.items, item)
-        {
-            let indexPath = NSIndexPath(forRow: index, inSection: 0)
-            if let cell = tableView.cellForRowAtIndexPath(indexPath)
-            {
-                configureTextForCell(cell, withChecklistItem: item)
-            }
-        }
+        checklist.sortChecklistItems()
+        tableView.reloadData()
         dismissViewControllerAnimated(true, completion: nil)
     }
 }
-

@@ -16,8 +16,8 @@ protocol IconPickerViewControllerDelegate: class
 class IconPickerViewController: UITableViewController
 {
     weak var delegate: IconPickerViewControllerDelegate?
-    
     let icons = ["No Icon", "Appointments", "Birthdays", "Chores", "Drinks", "Folder", "Groceries", "Inbox", "Photos", "Trips"]
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -35,8 +35,6 @@ class IconPickerViewController: UITableViewController
         let iconName = icons[indexPath.row]
         cell.textLabel!.text = iconName
         cell.imageView!.image = UIImage(named: iconName)
-        cell.imageView!.layer.borderColor = UIColor.blackColor().CGColor
-        cell.imageView!.layer.borderWidth = 2
         return cell
     }
     

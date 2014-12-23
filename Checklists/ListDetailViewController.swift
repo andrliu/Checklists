@@ -78,8 +78,6 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate, Icon
     {
         self.iconName = iconName
         iconImageView.image = UIImage(named: iconName)
-        iconImageView.layer.borderColor = UIColor.blackColor().CGColor
-        iconImageView.layer.borderWidth = 2
         navigationController?.popViewControllerAnimated(true)
     }
     

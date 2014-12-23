@@ -34,6 +34,11 @@ class Checklist: NSObject, NSCoding
         super.init()
     }
     
+    func sortChecklistItems()
+    {
+        items.sort({checklistItem1, checklistItem2 in return checklistItem1.dueDate.compare(checklistItem2.dueDate) == NSComparisonResult.OrderedAscending})
+    }
+    
     func encodeWithCoder(aCoder: NSCoder)
     {
         aCoder.encodeObject(name, forKey: "Name")
