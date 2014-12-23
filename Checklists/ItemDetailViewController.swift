@@ -71,9 +71,7 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate
         }
         else
         {
-            let item = ChecklistItem()
-            item.text = textField.text
-            item.checked = false
+            let item = ChecklistItem(text: textField.text, checked: false)
             delegate?.itemDetailViewController(self, didFinishAddingItem: item)
         }
     }

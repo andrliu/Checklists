@@ -23,6 +23,13 @@ class ChecklistItem: NSObject, NSCoding
         super.init()
     }
 
+    init(text: String, checked: Bool)
+    {
+        self.text = text
+        self.checked = checked
+        super.init()
+    }
+    
     required init(coder aDecoder: NSCoder)
     {
         text = aDecoder.decodeObjectForKey("Text") as String

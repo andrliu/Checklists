@@ -20,6 +20,7 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     override func viewWillAppear(animated: Bool)
     {
         super.viewWillAppear(animated)
+        tableView.rowHeight = 44
         tableView.reloadData()
     }
     
@@ -63,6 +64,9 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
         {
             cell.detailTextLabel!.text = "\(count) Remaining"
         }
+        cell.imageView!.image = UIImage(named: checklist.iconName)
+        cell.imageView!.layer.borderColor = UIColor.blackColor().CGColor
+        cell.imageView!.layer.borderWidth = 2
         cell.accessoryType = .DetailDisclosureButton
         return cell
     }
