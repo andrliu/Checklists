@@ -17,13 +17,12 @@ class ChecklistItem: NSObject, NSCoding
     {
         checked = !checked
     }
-    
-    func encodeWithCoder(aCoder: NSCoder)
+
+    override init()
     {
-        aCoder.encodeObject(text, forKey: "Text")
-        aCoder.encodeBool(checked, forKey: "Checked")
+        super.init()
     }
-    
+
     required init(coder aDecoder: NSCoder)
     {
         text = aDecoder.decodeObjectForKey("Text") as String
@@ -31,8 +30,9 @@ class ChecklistItem: NSObject, NSCoding
         super.init()
     }
     
-    override init()
+    func encodeWithCoder(aCoder: NSCoder)
     {
-        super.init()
+        aCoder.encodeObject(text, forKey: "Text")
+        aCoder.encodeBool(checked, forKey: "Checked")
     }
 }
