@@ -205,6 +205,16 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate
         }
     }
     
+    @IBAction func shouldRemindToggled(switchControl: UISwitch)
+    {
+        textField.resignFirstResponder()
+        if switchControl.on
+        {
+            let notificationSettings = UIUserNotificationSettings(forTypes: .Alert | .Sound, categories: nil)
+            UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+        }
+    }
+    
     @IBAction func done()
     {
         if let item = itemToEdit
@@ -212,6 +222,7 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate
             item.text = textField.text
             item.shouldRemind = shouldRemindSwitch.on
             item.dueDate = dueDate
+            item.scheduleNotification()
             delegate?.itemDetailViewController(self, didFinishEditingItem: item)
         }
         else
@@ -221,6 +232,7 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate
             item.checked = false
             item.shouldRemind = shouldRemindSwitch.on
             item.dueDate = dueDate
+            item.scheduleNotification()
             delegate?.itemDetailViewController(self, didFinishAddingItem: item)
         }
     }

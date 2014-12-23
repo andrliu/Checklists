@@ -307,6 +307,9 @@
                                                         <constraint firstAttribute="width" constant="49" id="yMD-5r-9Xn"/>
                                                         <constraint firstAttribute="height" constant="31" id="ySc-qu-OOC"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <action selector="shouldRemindToggled:" destination="CB5-oQ-I5W" eventType="valueChanged" id="w8q-4r-GgF"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
